@@ -1,7 +1,7 @@
-const fs = require('fs');
+const fs = require("fs");
 
 const readDirAndFile = locale => {
-  const dir = fs.readdirSync('./data', 'utf-8');
+  const dir = fs.readdirSync("./data", "utf-8");
   const isLocaleCovered = dir.includes(locale);
   if (isLocaleCovered) {
     const file = fs.readFileSync(`./data/${locale}`);
@@ -9,4 +9,4 @@ const readDirAndFile = locale => {
   }
 };
 
-console.log(readDirAndFile('es'));
+readDirAndFile("es");

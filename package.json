@@ -4,7 +4,7 @@
   "description": "search text files for naughty words, in 36 languages",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Andrew N Sadowski",
   "license": "ISC",

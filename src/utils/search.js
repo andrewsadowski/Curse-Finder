@@ -1,3 +1,3 @@
 /**
- * TODO : Create Binary Search function to
+ * TODO : Create Binary Search function
  */

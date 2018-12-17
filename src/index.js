@@ -1,12 +1,32 @@
-const fs = require("fs");
+const meow = require('meow');
 
-const readDirAndFile = locale => {
-  const dir = fs.readdirSync("./data", "utf-8");
-  const isLocaleCovered = dir.includes(locale);
-  if (isLocaleCovered) {
-    const file = fs.readFileSync(`./data/${locale}`);
-    console.log(file.toString());
+const cli = meow(
+  `
+	Usage
+	  $ curseFinder -f [file-path] -l [locale-code]
+	Options
+	  --file, -f  Absolute Path To File  
+    --locale, -l  Locale Code
+	Examples
+	  $ curseFinder -f 'Users/fakeUser/Desktop/naughtyTextFile.txt' -l 'ar'
+`,
+  {
+    flags: {
+      file: {
+        type: 'string',
+        alias: 'f'
+      },
+      locale: {
+        type: 'string',
+        alias: 'l'
+      }
+    }
   }
-};
+);
+const input = cli.input[0];
+const flags = cli.flags;
 
-readDirAndFile("es");
+(async () => {
+  await input;
+  return console.log(input, flags);
+})();

@@ -1,8 +1,9 @@
-const { fileToArr, readFileByLocale } = require("../utils/file-utils");
-const testFile = "./test-file.txt";
+const {fileToArr, readFileByLocale} = require('../utils/file-utils');
 
-describe("file-utils", () => {
-  test("fileToArr", () => {
-    expect(() => fileToArr("./test-file.txt").toBe(typeof "array"));
+const testFile = './test-file.txt';
+
+describe('file-utils', () => {
+  test('fileToArr', () => {
+    expect(() => fileToArr('./test-file.txt').toBe(typeof 'array'));
   });
 });

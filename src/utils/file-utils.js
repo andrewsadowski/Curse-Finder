@@ -3,7 +3,6 @@ const fs = require('fs');
 /**
  * TODO: - Create utility that orders said words
  * TODO: - Create utility that write matches to console && file
- * TODO: - Create utility that takes a locale code and processes file into an array of naughty words
  */
 
 const fileToArr = pathName => {
@@ -21,18 +20,23 @@ const fileToArr = pathName => {
  * @param {string} locale - Two letter locale code
  */
 const readFileByLocale = async locale => {
-  const dataDirArr = await fs.readdir('./data', async (err, files) => {
-    if (err) throw new Error(err);
-    if (files.includes(locale)) {
-      const fileContent = await fs.readFileSync(`./data/${locale}`);
-      console.log(fileContent.toString());
-      const stringifiedContent = fileContent.toString();
-      return stringifiedContent;
-    }
-    console.log(`The locale ${locale} is not currently supported... sorry!`);
+  const dataDirArr = await fs.readdir(
+    './data',
+    async (err, files) => {
+      if (err) throw new Error(err);
+      if (files.includes(locale)) {
+        const fileContent = await fs.readFileSync(`./data/${locale}`);
+        console.log(fileContent.toString());
+        const stringifiedContent = fileContent.toString();
+        return { stringifiedContent, fileContent };
+      }
+      console.log(
+        `The locale ${locale} is not currently supported... sorry!`
+      );
 
-    return files;
-  });
+      return files;
+    }
+  );
   return dataDirArr;
 };
 

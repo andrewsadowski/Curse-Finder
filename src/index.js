@@ -1,4 +1,6 @@
-const meow = require('meow');
+const meow = require("meow");
+
+const { readFileByLocale } = require("./utils/file-utils");
 
 const cli = meow(
   `
@@ -13,20 +15,23 @@ const cli = meow(
   {
     flags: {
       file: {
-        type: 'string',
-        alias: 'f'
+        type: "string",
+        alias: "f"
       },
       locale: {
-        type: 'string',
-        alias: 'l'
+        type: "string",
+        alias: "l"
       }
     }
   }
 );
 const input = cli.input[0];
 const flags = cli.flags;
+const locale = cli.flags.locale || cli.flags.l;
+console.log(`locale: ${locale}`);
 
 (async () => {
-  await input;
-  return console.log(input, flags);
+  const localeData = await readFileByLocale(locale);
+  // console.log(input, flags);
+  return localeData;
 })();

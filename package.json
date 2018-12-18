@@ -6,6 +6,7 @@
   "scripts": {
     "start:watch": "nodemon src/index.js --s",
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "xo --prettier --env=node --space --fix"
   },
   "author": "Andrew N Sadowski",

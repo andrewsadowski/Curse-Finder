@@ -4,7 +4,8 @@
   "description": "search text files for naughty words, in 36 languages",
   "main": "src/index.js",
   "scripts": {
-    "test": "xo && jest"
+    "test": "xo && jest",
+    "lint": "xo --prettier --env=node --space --fix"
   },
   "author": "Andrew N Sadowski",
   "license": "ISC",

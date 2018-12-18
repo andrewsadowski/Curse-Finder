@@ -1,10 +1,11 @@
 {
   "name": "curse-finder",
   "version": "1.0.0",
-  "description": "search text files for naughty words, in 36 languages",
+  "description": "Search text files for naughty words, in 36 languages",
   "main": "src/index.js",
   "scripts": {
-    "test": "xo && jest",
+    "start:watch": "nodemon src/index.js --s",
+    "test": "jest",
     "lint": "xo --prettier --env=node --space --fix"
   },
   "author": "Andrew N Sadowski",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "jest": "^23.6.0",
+    "nodemon": "^1.18.9",
     "xo": "^0.23.0"
   }
 }

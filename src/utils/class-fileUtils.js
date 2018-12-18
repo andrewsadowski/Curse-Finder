@@ -37,6 +37,7 @@ class FileUtil {
 }
 
 const sub = new FileUtil();
+
 console.log(sub.readFileByLocale('cs'));
 
 module.exports = {

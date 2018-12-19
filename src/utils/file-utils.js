@@ -21,29 +21,33 @@ const fileToArr = pathName => {
  * @param {string} locale - Two letter locale code
  */
 const readFileByLocale = async locale => {
-  try {
-    const dataDirArr = await fs.readdir("./data", async (err, files) => {
+  const dataDirArr = await fs.readdir("./data", async (err, files) => {
+    try {
       if (err) throw new Error(err);
       if (files.includes(locale)) {
         const fileContent = await fs.readFileSync(`./data/${locale}`);
         const lineBreakRegEx = /\n/g;
-        const arrNaughtyContent = await fileContent
+        const arrFileContent = await fileContent
           .toString()
           .split(lineBreakRegEx);
-        const stringifiedContent = await fileContent.toString();
-        return { stringifiedContent, arrNaughtyContent };
+        console.log(fileContent.toString());
+        console.log(arrFileContent);
+        const stringifiedContent = fileContent.toString();
+        return { stringifiedContent, arrFileContent };
       }
       return console.log(
         `The locale ${locale} is not currently supported... sorry!`
       );
-    });
-  } catch (err) {
-    throw new Error(err);
-  }
-};
-let cs = readFileByLocale("cs");
 
-console.log(cs, cs.stringifiedContent, cs.arrNaughtyContent);
+      return dataDirArr;
+    } catch (err) {
+      throw new Error(err);
+    }
+  });
+};
+readFileByLocale("cs");
+
+// console.log(cs.stringifiedContent, cs.arrNaughtyContent);
 
 module.exports = {
   fileToArr,

@@ -6,12 +6,14 @@ describe("file-utils", () => {
   test("fileToArr", () => {
     expect(() => fileToArr(testFile).toBe(typeof "array"));
   });
-  test("readFileByLocale", async () => {
+  test("readFileByLocale", async done => {
     const localeText = await readFileByLocale("es");
-    const stringText = localeText.stringifiedContent;
-    const arrLocaleText = localeText.arrNaughtyContent;
+    console.log(localeText);
+    const stringText = await localeText.stringifiedContent;
+    const arrLocaleText = await localeText.arrNaughtyContent;
 
-    expect(() => readFileByLocale("cs").toBe(typeof "array"));
-    expect(arrNaughtyContent).toBe(typeof "array");
+    expect(() => readFileByLocale("cs").toBe(typeof "object"));
+    expect(arrLocaleText).toBe(typeof "array");
+    done();
   });
 });

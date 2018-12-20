@@ -1,11 +1,11 @@
-const fs = require("fs");
+const fs = require('fs');
 
 /**
  * TODO: - Create utility that orders said words
  * TODO: - Create utility that write matches to console && file
  */
 const fileToArr = pathName => {
-  const file = fs.readFile(pathName, "utf8", err => {
+  const file = fs.readFile(pathName, 'utf8', err => {
     if (err) {
       throw err;
     }
@@ -20,7 +20,7 @@ const fileToArr = pathName => {
  * @param {string} locale - Two letter locale code
  */
 const readFileByLocale = async locale => {
-  const dataDirArr = await fs.readdir("./data", async (err, files) => {
+  const dataDirArr = await fs.readdir('./data', async (err, files) => {
     try {
       if (err) throw new Error(err);
       if (files.includes(locale)) {
@@ -29,7 +29,7 @@ const readFileByLocale = async locale => {
         const arrFileContent = await fileContent
           .toString()
           .split(lineBreakRegEx);
-        // console.log(fileContent.toString());
+        // Console.log(fileContent.toString());
         // console.log(arrFileContent);
         const stringifiedContent = fileContent.toString();
         return arrFileContent;
@@ -42,7 +42,7 @@ const readFileByLocale = async locale => {
     }
   });
 };
-// readFileByLocale("cs");
+// ReadFileByLocale("cs");
 
 // console.log(cs.stringifiedContent, cs.arrNaughtyContent);
 

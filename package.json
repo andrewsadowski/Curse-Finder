@@ -7,7 +7,7 @@
     "start:watch": "nodemon src/index.js --s",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "xo --prettier --env=node --space --fix"
+    "lint": "xo --prettier --fix"
   },
   "author": "Andrew N Sadowski",
   "license": "ISC",

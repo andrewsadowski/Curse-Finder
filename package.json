@@ -19,5 +19,14 @@
     "jest": "^23.6.0",
     "nodemon": "^1.18.9",
     "xo": "^0.23.0"
+  },
+  "xo": {
+    "space": true,
+    "env": [
+      "node"
+    ],
+    "ignores": [
+      "./src/__tests__/*.test.js"
+    ]
   }
 }

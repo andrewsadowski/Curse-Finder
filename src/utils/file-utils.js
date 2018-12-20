@@ -20,27 +20,32 @@ const fileToArr = pathName => {
  * @param {string} locale - Two letter locale code
  */
 const readFileByLocale = async locale => {
-  const dataDirArr = await fs.readdir('./data', async (err, files) => {
-    try {
-      if (err) throw new Error(err);
-      if (files.includes(locale)) {
-        const fileContent = await fs.readFileSync(`./data/${locale}`);
-        const lineBreakRegEx = /\n/g;
-        const arrFileContent = await fileContent
-          .toString()
-          .split(lineBreakRegEx);
-        // Console.log(fileContent.toString());
-        // console.log(arrFileContent);
-        const stringifiedContent = fileContent.toString();
-        return arrFileContent;
+  const dataDirArr = await fs.readdir(
+    './data',
+    async (err, files) => {
+      try {
+        if (err) throw new Error(err);
+        if (files.includes(locale)) {
+          const fileContent = await fs.readFileSync(
+            `./data/${locale}`
+          );
+          const lineBreakRegEx = /\n/g;
+          const arrFileContent = await fileContent
+            .toString()
+            .split(lineBreakRegEx);
+          // Console.log(fileContent.toString());
+          // console.log(arrFileContent);
+          const stringifiedContent = fileContent.toString();
+          return arrFileContent;
+        }
+        return console.log(
+          `The locale ${locale} is not currently supported... sorry!`
+        );
+      } catch (error) {
+        throw new Error(error);
       }
-      return console.log(
-        `The locale ${locale} is not currently supported... sorry!`
-      );
-    } catch (err) {
-      throw new Error(err);
     }
-  });
+  );
 };
 // ReadFileByLocale("cs");
 

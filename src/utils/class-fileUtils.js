@@ -20,8 +20,6 @@ class FileUtil {
         const arrFileContent = await fileContent
           .toString()
           .split(lineBreakRegEx);
-        console.log(fileContent.toString());
-        console.log(arrFileContent);
         const stringifiedContent = fileContent.toString();
         return { stringifiedContent, arrFileContent };
       }

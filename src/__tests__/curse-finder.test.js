@@ -1,4 +1,5 @@
 const { fileToArr, readFileByLocale } = require("../utils/file-utils");
+const { FileUtil } = require("../utils/class-fileUtils");
 
 const testFile = "./test-file.txt";
 
@@ -8,12 +9,9 @@ describe("file-utils", () => {
   });
   test("readFileByLocale", async done => {
     const localeText = await readFileByLocale("es");
-    console.log(localeText);
-    const stringText = await localeText.stringifiedContent;
-    const arrLocaleText = await localeText.arrNaughtyContent;
+    // console.log(localeText);
 
-    expect(() => readFileByLocale("cs").toBe(typeof "object"));
-    expect(arrLocaleText).toBe(typeof "array");
+    expect(() => readFileByLocale("cs").toBe(typeof "array"));
     done();
   });
 });

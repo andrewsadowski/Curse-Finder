@@ -4,7 +4,6 @@ const fs = require("fs");
  * TODO: - Create utility that orders said words
  * TODO: - Create utility that write matches to console && file
  */
-
 const fileToArr = pathName => {
   const file = fs.readFile(pathName, "utf8", err => {
     if (err) {
@@ -30,22 +29,20 @@ const readFileByLocale = async locale => {
         const arrFileContent = await fileContent
           .toString()
           .split(lineBreakRegEx);
-        console.log(fileContent.toString());
-        console.log(arrFileContent);
+        // console.log(fileContent.toString());
+        // console.log(arrFileContent);
         const stringifiedContent = fileContent.toString();
-        return { stringifiedContent, arrFileContent };
+        return arrFileContent;
       }
       return console.log(
         `The locale ${locale} is not currently supported... sorry!`
       );
-
-      return dataDirArr;
     } catch (err) {
       throw new Error(err);
     }
   });
 };
-readFileByLocale("cs");
+// readFileByLocale("cs");
 
 // console.log(cs.stringifiedContent, cs.arrNaughtyContent);
 

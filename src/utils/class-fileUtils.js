@@ -27,28 +27,25 @@ class FileUtil {
   }
 
   async readFileByLocale(locale) {
-    const dataDirArr = await fs.readdir(
-      './data',
-      async (err, files) => {
-        if (err) throw new Error(err);
-        if (files.includes(locale)) {
-          const fileContent = await fs.readFileSync(
-            `./data/${locale}`
-          );
-          const lineBreakRegEx = /\n/g;
-          const arrFileContent = await fileContent
-            .toString()
-            .split(lineBreakRegEx);
-          const stringifiedContent = fileContent.toString();
-          return { stringifiedContent, arrFileContent };
-        }
-        return console.log(
-          `The locale ${locale} is not currently supported... sorry!`
-        );
+    try {
+      const dataDirArr = await dirToArr('./data');
+      console.log(await dataDirArr);
+      if (dataDirArr.includes(locale)) {
+        const fileContent = await fs.readFileSync(`./data/${locale}`);
+        const lineBreakRegEx = /\n/g;
+        const arrFileContent = await fileContent
+          .toString()
+          .split(lineBreakRegEx);
+        console.log(Array.isArray(arrFileContent));
+        console.log(arrFileContent.length, arrFileContent);
+        return arrFileContent;
       }
-    );
-    return dataDirArr;
-  }
+      return console.log(
+        `The locale ${locale} is not currently supported... sorry!`
+      );
+    } catch (error) {
+      throw new Error(error);
+    }
 }
 
 const sub = new FileUtil();

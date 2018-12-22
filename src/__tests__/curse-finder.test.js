@@ -1,22 +1,29 @@
-const { fileToArr, readFileByLocale } = require("../utils/file-utils");
-const { FileUtil } = require("../utils/class-fileUtils");
+const {
+  fileToArr,
+  readFileByLocale
+} = require('../utils/file-utils');
+const { FileUtil } = require('../utils/class-fileUtils');
 
-const testFile = "./test-file.txt";
+const testFile = './test-file.txt';
 
-const localeArr = async () => {
-  const localeText = await readFileByLocale("es");
-
+beforeAll(async () => {
+  const localeText = await readFileByLocale('cs');
+  console.log(await `localeText: ${localeText}`);
   return localeText;
-};
+});
 
-describe("file-utils", () => {
-  test("fileToArr", () => {
-    expect(() => typeof fileToArr(testFile).toBe("array"));
+describe('file-utils', () => {
+  test('fileToArr', () => {
+    expect(() => typeof fileToArr(testFile).toBe('array'));
   });
-  xtest("readFileByLocale", async () => {
-    // // const localeText = await localeArr();
-    // console.log(readFileByLocale("es"));
-    // // const localeText = await readFileByLocale("es");
-    // expect(() => readFileByLocale("es")).toBe("array");
+
+  test('readFileByLocale', async () => {
+    expect.assertions(1);
+
+    // const localeText = await readFileByLocale('cs');
+    // // const localeTextLength = await localeText.length;
+    // console.log(localeText);
+
+    expect(typeof localeText).toBe('array');
   });
 });

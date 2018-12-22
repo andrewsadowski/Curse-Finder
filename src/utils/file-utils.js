@@ -1,7 +1,8 @@
 const fs = require('fs');
+const { promisify } = require('util');
 
+const readdir = promisify(fs.readdir);
 /**
- * TODO: - Create utility that orders said words
  * TODO: - Create utility that write matches to console && file
  */
 const fileToArr = pathName => {
@@ -17,39 +18,49 @@ const fileToArr = pathName => {
 
 /**
  *
+ * @param {string} pathName - relative path to directory
+ */
+const dirToArr = async pathName => {
+  try {
+    const dir = await readdir(pathName);
+    return dir;
+  } catch (error) {
+    if (error) {
+      throw new Error(error);
+      return `Unable to find dir: ${error}`;
+    }
+  }
+};
+
+/**
+ *
  * @param {string} locale - Two letter locale code
  */
 const readFileByLocale = async locale => {
-  const dataDirArr = await fs.readdir(
-    './data',
-    async (err, files) => {
-      try {
-        if (err) throw new Error(err);
-        if (files.includes(locale)) {
-          const fileContent = await fs.readFileSync(
-            `./data/${locale}`
-          );
-          const lineBreakRegEx = /\n/g;
-          const arrFileContent = await fileContent
-            .toString()
-            .split(lineBreakRegEx);
-          // Console.log(fileContent.toString());
-          // console.log(arrFileContent);
-          const stringifiedContent = fileContent.toString();
-          return arrFileContent;
-        }
-        return console.log(
-          `The locale ${locale} is not currently supported... sorry!`
-        );
-      } catch (error) {
-        throw new Error(error);
-      }
+  try {
+    const dataDirArr = await dirToArr('./data');
+    console.log(await dataDirArr);
+    if (dataDirArr.includes(locale)) {
+      const fileContent = await fs.readFileSync(`./data/${locale}`);
+      const lineBreakRegEx = /\n/g;
+      const arrFileContent = await fileContent
+        .toString()
+        .split(lineBreakRegEx);
+      console.log(Array.isArray(arrFileContent));
+      console.log(arrFileContent.length, arrFileContent);
+      return arrFileContent;
     }
-  );
+    return console.log(
+      `The locale ${locale} is not currently supported... sorry!`
+    );
+  } catch (error) {
+    throw new Error(error);
+  }
 };
-// ReadFileByLocale("cs");
 
-// console.log(cs.stringifiedContent, cs.arrNaughtyContent);
+// const output = readFileByLocale('es');
+// console.log(output);
+// console.log(Array.isArray(output);
 
 module.exports = {
   fileToArr,

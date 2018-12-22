@@ -3,8 +3,14 @@ const { promisify } = require('util');
 
 const readdir = promisify(fs.readdir);
 const readfile = promisify(fs.readFile);
+
 /**
  * TODO: - Create utility that writes matches to console && file
+ */
+
+/**
+ *
+ * @param {string} pathName - absolute path as string
  */
 const fileToArr = async pathName => {
   const file = await readfile(pathName, 'utf8');
@@ -24,7 +30,6 @@ const dirToArr = async pathName => {
   } catch (error) {
     if (error) {
       throw new Error(error);
-      return `Unable to find dir: ${error}`;
     }
   }
 };
@@ -55,7 +60,7 @@ const readFileByLocale = async locale => {
   }
 };
 
-// const output = readFileByLocale('es');
+// Const output = readFileByLocale('es');
 // console.log(output);
 // console.log(Array.isArray(output);
 

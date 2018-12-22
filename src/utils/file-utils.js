@@ -2,15 +2,12 @@ const fs = require('fs');
 const { promisify } = require('util');
 
 const readdir = promisify(fs.readdir);
+const readfile = promisify(fs.readFile);
 /**
  * TODO: - Create utility that writes matches to console && file
  */
-const fileToArr = pathName => {
-  const file = fs.readFile(pathName, 'utf8', err => {
-    if (err) {
-      throw err;
-    }
-  });
+const fileToArr = async pathName => {
+  const file = await readfile(pathName, 'utf8');
   const lineBreakRegEx = /\n/g;
   const fileArr = file.split(lineBreakRegEx);
   return fileArr;

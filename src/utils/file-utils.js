@@ -64,5 +64,6 @@ const readFileByLocale = async locale => {
 
 module.exports = {
   fileToArr,
+  dirToArr,
   readFileByLocale
 };

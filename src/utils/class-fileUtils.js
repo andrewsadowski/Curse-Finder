@@ -39,18 +39,20 @@ class FileUtil {
         console.log(Array.isArray(arrFileContent));
         console.log(arrFileContent.length, arrFileContent);
         return arrFileContent;
+      } else {
+
+        return console.log(
+          `The locale ${locale} is not currently supported... sorry!`
+        );
       }
-      return console.log(
-        `The locale ${locale} is not currently supported... sorry!`
-      );
     } catch (error) {
       throw new Error(error);
     }
 }
 
-const sub = new FileUtil();
+// const sub = new FileUtil();
 
-console.log(sub.readFileByLocale('cs'));
+// console.log(sub.readFileByLocale('cs'));
 
 module.exports = {
   FileUtil

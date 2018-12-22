@@ -3,7 +3,7 @@ const { promisify } = require('util');
 
 const readdir = promisify(fs.readdir);
 /**
- * TODO: - Create utility that write matches to console && file
+ * TODO: - Create utility that writes matches to console && file
  */
 const fileToArr = pathName => {
   const file = fs.readFile(pathName, 'utf8', err => {

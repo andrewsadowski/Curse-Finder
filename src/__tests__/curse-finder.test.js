@@ -1,5 +1,6 @@
 const {
   fileToArr,
+  dirToArr,
   readFileByLocale
 } = require('../utils/file-utils');
 
@@ -15,5 +16,10 @@ describe('file-utils', () => {
   test('readFileByLocale', async () => {
     const localeText = await readFileByLocale('es');
     expect(Array.isArray(localeText)).toBeTruthy();
+  });
+
+  test('dirToArr', async () => {
+    const directory = await dirToArr('./data');
+    console.log(directory);
   });
 });

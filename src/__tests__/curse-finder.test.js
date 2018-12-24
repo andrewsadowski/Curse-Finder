@@ -3,6 +3,10 @@ const {
   dirToArr,
   readFileByLocale
 } = require('../utils/file-utils');
+const {
+  lowerCaseArrItems,
+  sortLocaleSpecificFile
+} = require('../utils/sort-utils');
 
 const testFile =
   '/Users/andrewsadowski/dev/nodeTest/Curse-Finder/src/__tests__/test-file.txt';
@@ -22,4 +26,9 @@ describe('file-utils', () => {
     const directory = await dirToArr('./data');
     console.log(directory);
   });
+});
+
+describe('sort-utils', () => {
+  xtest('lowerCaseArrItems', () => {});
+  xtest('sortLocaleSpecificFile', () => {});
 });

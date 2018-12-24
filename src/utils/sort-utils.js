@@ -25,4 +25,8 @@ const sortLocaleSpecificFile = async locale => {
   }
 };
 
-sortLocaleSpecificFile('es');
+// sortLocaleSpecificFile('es');
+module.exports = {
+  sortLocaleSpecificFile,
+  lowerCaseArrItems
+};

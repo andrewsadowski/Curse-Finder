@@ -1,4 +1,4 @@
 /**
  * TODO : Create Binary Search function
- * TODO : create execute reauest Higher order function
+ *      : Which returns matches, and writes matches to log file
  */

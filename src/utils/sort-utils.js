@@ -9,7 +9,7 @@ const lowerCaseArrItems = arr => {
   return lowerCaseArr;
 };
 
-const getLocaleSpecificFile = async locale => {
+const sortLocaleSpecificFile = async locale => {
   try {
     const localeArr = await readFileByLocale(locale);
     let lowerCaseLocaleArr = await lowerCaseArrItems(localeArr);
@@ -25,4 +25,4 @@ const getLocaleSpecificFile = async locale => {
   }
 };
 
-getLocaleSpecificFile('es');
+sortLocaleSpecificFile('es');

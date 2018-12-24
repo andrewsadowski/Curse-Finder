@@ -22,6 +22,7 @@ const fileToArr = async pathName => {
 /**
  *
  * @param {string} pathName - relative path to directory
+ * TODO - utilize readFile instead of readFileSync
  */
 const dirToArr = async pathName => {
   try {
@@ -41,15 +42,12 @@ const dirToArr = async pathName => {
 const readFileByLocale = async locale => {
   try {
     const dataDirArr = await dirToArr('./data');
-    console.log(await dataDirArr);
     if (dataDirArr.includes(locale)) {
       const fileContent = await fs.readFileSync(`./data/${locale}`);
       const lineBreakRegEx = /\n/g;
       const arrFileContent = await fileContent
         .toString()
         .split(lineBreakRegEx);
-      console.log(Array.isArray(arrFileContent));
-      console.log(arrFileContent.length, arrFileContent);
       return arrFileContent;
     }
     return console.log(
@@ -60,9 +58,8 @@ const readFileByLocale = async locale => {
   }
 };
 
-// Const output = readFileByLocale('es');
+// const output = readFileByLocale('es');
 // console.log(output);
-// console.log(Array.isArray(output);
 
 module.exports = {
   fileToArr,

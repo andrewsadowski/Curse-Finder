@@ -8,7 +8,6 @@ const {
   sortLocaleSpecificFile
 } = require('../utils/sort-utils');
 
-console.log(lowerCaseArrItems(['Merlin', 'Gandalf', 'Allanon']));
 const testFile =
   '/Users/andrewsadowski/dev/nodeTest/Curse-Finder/src/__tests__/test-file.txt';
 
@@ -25,7 +24,8 @@ describe('file-utils', () => {
 
   test('dirToArr', async () => {
     const directory = await dirToArr('./data');
-    console.log(directory);
+    expect(Array.isArray(directory)).toBeTruthy();
+    expect(directory.length).toEqual(26);
   });
 });
 

@@ -35,6 +35,13 @@ const dirToArr = async pathName => {
   }
 };
 
+const isArray = val => {
+  if (val === null || val === undefined) {
+    return [];
+  }
+  return Array.isArray(val) ? val : [val];
+};
+
 /**
  *
  * @param {string} locale - Two letter locale code

@@ -35,6 +35,10 @@ const dirToArr = async pathName => {
   }
 };
 
+/**
+ *
+ * @param {array} val - checks if value is array
+ */
 const isArray = val => {
   if (val === null || val === undefined) {
     return [];
